@@ -1,5 +1,6 @@
 package net.ausiasmarch.blogBusterSB;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,9 @@ public class PostController {
 
     @Autowired
     PostRepository oPostRepository;
+
+    @Autowired
+    HttpSession oHttpSession;
 
     @GetMapping("/{id}")
     public ResponseEntity<PostEntity> get(@PathVariable(value = "id") Long id) {
@@ -46,30 +50,45 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
-        if (oPostRepository.existsById(id)) {
-            oPostRepository.deleteById(id);
-            if (oPostRepository.existsById(id)) {
-                return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
-            } else {
-                return new ResponseEntity<Long>(id, HttpStatus.OK);
-            }
+        UsuarioBean oUsuarioBean = (UsuarioBean) oHttpSession.getAttribute("usuario");
+        if (oUsuarioBean == null) {
+            return new ResponseEntity<Long>(0L, HttpStatus.UNAUTHORIZED);
         } else {
-            return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
+            if (oPostRepository.existsById(id)) {
+                oPostRepository.deleteById(id);
+                if (oPostRepository.existsById(id)) {
+                    return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
+                } else {
+                    return new ResponseEntity<Long>(id, HttpStatus.OK);
+                }
+            } else {
+                return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
+            }
         }
     }
 
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody PostEntity oPostEntity) {
-        oPostEntity.setId(null);
-        return new ResponseEntity<PostEntity>(oPostRepository.save(oPostEntity), HttpStatus.OK);
+        UsuarioBean oUsuarioBean = (UsuarioBean) oHttpSession.getAttribute("usuario");
+        if (oUsuarioBean == null) {
+            return new ResponseEntity<Long>(0L, HttpStatus.UNAUTHORIZED);
+        } else {
+            oPostEntity.setId(null);
+            return new ResponseEntity<PostEntity>(oPostRepository.save(oPostEntity), HttpStatus.OK);
+        }
     }
 
     @PutMapping("/")
     public ResponseEntity<?> update(@RequestBody PostEntity oPostEntity) {
-        if (oPostRepository.existsById(oPostEntity.getId())) {
-            return new ResponseEntity<PostEntity>(oPostRepository.save(oPostEntity), HttpStatus.OK);
+        UsuarioBean oUsuarioBean = (UsuarioBean) oHttpSession.getAttribute("usuario");
+        if (oUsuarioBean == null) {
+            return new ResponseEntity<Long>(0L, HttpStatus.UNAUTHORIZED);
         } else {
-            return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
+            if (oPostRepository.existsById(oPostEntity.getId())) {
+                return new ResponseEntity<PostEntity>(oPostRepository.save(oPostEntity), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<Long>(0L, HttpStatus.NOT_MODIFIED);
+            }
         }
     }
 
