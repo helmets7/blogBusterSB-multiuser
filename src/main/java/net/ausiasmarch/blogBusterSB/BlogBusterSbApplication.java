@@ -10,4 +10,5 @@ public class BlogBusterSbApplication {
 		SpringApplication.run(BlogBusterSbApplication.class, args);
 	}
 
+        
 }
