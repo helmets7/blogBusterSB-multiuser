@@ -19,5 +19,6 @@ public class PostController {
     public ResponseEntity<PostEntity> get (@PathVariable(value="id") Long id){        
         return new ResponseEntity<PostEntity>(oPostRepository.getById(id),HttpStatus.OK);                        
     }
+    
 
 }
