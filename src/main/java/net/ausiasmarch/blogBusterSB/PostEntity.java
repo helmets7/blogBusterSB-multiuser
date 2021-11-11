@@ -1,5 +1,6 @@
 package net.ausiasmarch.blogBusterSB;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class PostEntity implements Serializable{
     private String titulo;
     private String cuerpo;
     private String etiquetas;
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private LocalDateTime fecha;
     private Boolean visible;
 
