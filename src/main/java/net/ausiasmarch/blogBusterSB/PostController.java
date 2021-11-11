@@ -48,6 +48,13 @@ public class PostController {
         return new ResponseEntity<Page<PostEntity>>(oPage, HttpStatus.OK);
     }
 
+    @GetMapping("/filter/{filtro}")
+    public ResponseEntity<Page<PostEntity>> getFilteredPage(@PathVariable(value = "filtro") String sfiltro, @PageableDefault(page = 0, size = 10, direction = Direction.ASC) Pageable oPageable) {
+        Page<PostEntity> oPage = null;
+        oPage = oPostRepository.findByTituloIgnoreCaseContainingOrCuerpoIgnoreCaseContainingOrEtiquetasIgnoreCaseContaining(sfiltro, sfiltro, sfiltro, oPageable);
+        return new ResponseEntity<Page<PostEntity>>(oPage, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
         UsuarioBean oUsuarioBean = (UsuarioBean) oHttpSession.getAttribute("usuario");

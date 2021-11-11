@@ -18,27 +18,27 @@ public class SessionController {
     @Autowired
     HttpSession oHttpSession;
 
-    @GetMapping("/")
-    public ResponseEntity<String> check() {
+    @GetMapping("")
+    public ResponseEntity<UsuarioBean> check() {
         UsuarioBean oUsuarioBean = (UsuarioBean) oHttpSession.getAttribute("usuario");
         if (oUsuarioBean == null) {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         } else {
-            return new ResponseEntity<>(oUsuarioBean.getLogin(), HttpStatus.OK);
+            return new ResponseEntity<UsuarioBean>(oUsuarioBean, HttpStatus.OK);
         }
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> login(@RequestBody UsuarioBean oUsuarioBean) {
+    @PostMapping("")
+    public ResponseEntity<UsuarioBean> login(@RequestBody UsuarioBean oUsuarioBean) {
         if (oUsuarioBean.getLogin().equalsIgnoreCase("admin") && oUsuarioBean.getPassword().equalsIgnoreCase("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")) {
             oHttpSession.setAttribute("usuario", oUsuarioBean);
-            return new ResponseEntity<>(oUsuarioBean.getLogin(), HttpStatus.OK);
+            return new ResponseEntity<UsuarioBean>(oUsuarioBean, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("")
     public ResponseEntity<?> logout() {
         oHttpSession.invalidate();
         return new ResponseEntity<>(null, HttpStatus.OK);
