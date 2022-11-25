@@ -1,4 +1,4 @@
-package net.ausiasmarch.blogBusterSB;
+package net.ausiasmarch.blogBusterSB.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

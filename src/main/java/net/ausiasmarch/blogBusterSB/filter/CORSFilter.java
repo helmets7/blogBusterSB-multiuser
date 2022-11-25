@@ -1,5 +1,5 @@
 
-package net.ausiasmarch.blogBusterSB;
+package net.ausiasmarch.blogBusterSB.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;

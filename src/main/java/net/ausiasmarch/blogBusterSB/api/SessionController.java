@@ -1,6 +1,7 @@
-package net.ausiasmarch.blogBusterSB;
+package net.ausiasmarch.blogBusterSB.api;
 
 import javax.servlet.http.HttpSession;
+import net.ausiasmarch.blogBusterSB.bean.UsuarioBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,8 @@ public class SessionController {
 
     @PostMapping("")
     public ResponseEntity<UsuarioBean> login(@RequestBody UsuarioBean oUsuarioBean) {
-        if (oUsuarioBean.getLogin().equalsIgnoreCase("admin") && oUsuarioBean.getPassword().equalsIgnoreCase("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")) {
+        if (oUsuarioBean.getLogin().equalsIgnoreCase("admin")
+               && oUsuarioBean.getPassword().equalsIgnoreCase("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")) {
             oHttpSession.setAttribute("usuario", oUsuarioBean);
             return new ResponseEntity<UsuarioBean>(oUsuarioBean, HttpStatus.OK);
         } else {

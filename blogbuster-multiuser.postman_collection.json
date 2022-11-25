@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "dd28670a-7306-40b3-a5fe-4729539b55d0",
+		"name": "blogbuster-multiuser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USER generateSome",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/user/generate/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"user",
+						"generate",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "USER getpage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/user?page=0&size=5&filter=rai",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						},
+						{
+							"key": "filter",
+							"value": "rai"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ralph\",\n    \"surname\": \"villar\",\n    \"lastname\": \"mora\",\n    \"email\": \"test@email.com\",\n    \"username\": \"raivei\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 42,\n    \"name\": \"ooralphooo\",\n    \"surname\": \"villar\",\n    \"lastname\": \"mora\",\n    \"email\": \"test@email.com\",\n    \"username\": \"raiv0ei\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/user/40",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"user",
+						"40"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST generateSome",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post/generate/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post",
+						"generate",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST getpage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post?page=0&size=5&filter=lor&id_user=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						},
+						{
+							"key": "filter",
+							"value": "lor"
+						},
+						{
+							"key": "id_user",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus lacus in tellus tempor, vel pellentesque nisl tincidunt. Ut iaculis eleifend commodo. Mauris tortor arcu, tincidunt a aliquam vel, pulvinar eget ligula. Phasellus posuere rhoncus dolor. Sed dapibus est id aliquam pretium. Sed purus quam, sagittis non aliquet quis, congue vel ante. Mauris vitae feugiat sapien. Nulla quis libero felis. Vivamus eu auctor neque, sit amet aliquet purus. Proin gravida egestas lacus eu dignissim.\\r\\n\\r\\n\",\n    \"labels\": \"purus tortor pretium ok ko\",\n    \"visible\": true,\n    \"user\": {\n        \"id\": 5\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 5,\n    \"title\": \"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus lacus in tellus tempor, vel pellentesque nisl tincidunt. Ut iaculis eleifend commodo. Mauris tortor arcu, tincidunt a aliquam vel, pulvinar eget ligula. Phasellus posuere rhoncus dolor. Sed dapibus est id aliquam pretium. Sed purus quam, sagittis non aliquet quis, congue vel ante. Mauris vitae feugiat sapien. Nulla quis libero felis. Vivamus eu auctor neque, sit amet aliquet purus. Proin gravida egestas lacus eu dignissim.\\r\\n\\r\\n\",\n    \"labels\": \"purus tortor pretium ok ko\",\n    \"visible\": true,\n    \"user\": {\n        \"id\": 5\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/post/40",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"post",
+						"40"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
